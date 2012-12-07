@@ -136,6 +136,8 @@ public class LogParser {
 												// events.
 						value_start = name_end + 1;
 						value_end = line.indexOf('&', value_start);
+						if(value_end == -1)
+							value_end = line.length()-1;
 						value = line.substring(value_start, value_end);
 						uid = value;
 					} else if (name.equals("[E]")) {// end of this event.
@@ -151,9 +153,12 @@ public class LogParser {
 					} else {
 						value_start = name_end + 1;
 						value_end = line.indexOf('&', value_start);
+						if(value_end == -1)
+							value_end = line.length()-1;
 						value = line.substring(value_start, value_end);
+						
 						dbNameStr += name + ",";
-						System.out.println(name);
+						//System.out.println(name);
 						if (tableFieldType.get(name).equals("text"))
 							dbValueStr += "'" + value + "',";
 						else
