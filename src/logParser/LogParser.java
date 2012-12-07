@@ -17,22 +17,22 @@ import utils.DBUtil;
 
 public class LogParser {
 
-	private static String path = 
+	private static String path = "";
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		parse_v8();
+		parse_v8(path);
 	}
 	
 
-	public static void parse_v8() throws Exception {
+	public static void parse_v8(String rawLogFile) throws Exception {
 		//String dir = "/Library/WebServer/CGI-Executables/log/";
 		//String rawLogFile = dir + "history.log";
 
-		String dir = "D:\\datasync\\";
-		String rawLogFile = dir + "relevance.txt";
+		//String dir = "D:\\datasync\\";
+		//String rawLogFile = dir + "relevance.txt";
 		
 		//String rawLogFile = dir + "recalltagger_history.log";
 		// String pageContentDir = dir + "data/";
