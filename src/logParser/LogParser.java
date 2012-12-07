@@ -17,11 +17,12 @@ import utils.DBUtil;
 
 public class LogParser {
 
-	private static String path = "";
+	private static String path = "/Users/Sunny/Haojian/eclipse/ApachLogToSql/log_nov_1.txt";
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		parse_v8(path);
 	}
@@ -109,6 +110,9 @@ public class LogParser {
 			tableFieldType.put("touchsize4", "numeric");
 			tableFieldType.put("FrustrationLvl", "numeric");
 			tableFieldType.put("RelevanceRate", "numeric");
+			tableFieldType.put("val", "numeric");
+			tableFieldType.put("UrlStr", "text");
+			tableFieldType.put("ShortStr", "text");
 			// add more fields here...
 			
 			line = "CREATE TABLE emu_android_success ( ";
