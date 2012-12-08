@@ -122,6 +122,10 @@ public class LogParser {
 			line = line.substring(0, line.length() - 2) + ");";
 			// ---------------------
 			db1.execute(line);// create the table
+			
+			String dbURLNameStr = "starturl";
+			String dbURLValueStr = "";
+			
 			while ((line = br.readLine()) != null) {
 				int name_start = 0, name_end = 0;
 				int value_start = 0, value_end = 0;
@@ -143,6 +147,15 @@ public class LogParser {
 					} else if (name.equals("[E]")) {// end of this event.
 						value_start = name_end + 1;
 						value_end = value_start;
+						
+						/*
+						if(!dbNameStr.contains(dbURLNameStr)){
+							dbNameStr += dbURLNameStr + ",";
+							dbValueStr += "'" + dbURLValueStr + "',";
+							//System.out.println(dbValueStr);
+						}
+						*/
+						
 						dbNameStr += "uid";
 						dbValueStr +=  "'" + uid + "'";// uid is a bigint in the db.
 						String sql = "INSERT INTO emu_android_success (" + dbNameStr
@@ -159,8 +172,13 @@ public class LogParser {
 						
 						dbNameStr += name + ",";
 						//System.out.println(name);
-						if (tableFieldType.get(name).equals("text"))
+						if (tableFieldType.get(name).equals("text")){
 							dbValueStr += "'" + value + "',";
+							if(name.equals(dbURLNameStr)){
+								dbURLValueStr = value;
+								System.out.println(dbURLValueStr);
+							}
+						}
 						else
 							dbValueStr += "" + value + ",";
 					}
