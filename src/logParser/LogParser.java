@@ -171,6 +171,7 @@ public class LogParser {
 						value = line.substring(value_start, value_end);
 						if(name.equals("EstimationTimeSeconds") && value.length() == 1){
 							name = "RelevanceRate";
+							dbValueStr.replace("SelfEstimation", "RelevanceReport");
 						}
 						dbNameStr += name + ",";
 						System.out.println(name);
