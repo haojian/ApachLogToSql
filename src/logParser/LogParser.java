@@ -169,15 +169,13 @@ public class LogParser {
 						if(value_end == -1)
 							value_end = line.length()-1;
 						value = line.substring(value_start, value_end);
-						
+						if(name.equals("estimationtimeseconds") && value.length() == 1){
+							name = "relevancerate";
+						}
 						dbNameStr += name + ",";
 						//System.out.println(name);
 						if (tableFieldType.get(name).equals("text")){
 							dbValueStr += "'" + value + "',";
-							if(name.equals(dbURLNameStr)){
-								dbURLValueStr = value;
-								System.out.println(dbURLValueStr);
-							}
 						}
 						else
 							dbValueStr += "" + value + ",";

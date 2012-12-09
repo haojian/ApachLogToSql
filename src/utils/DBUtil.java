@@ -72,7 +72,7 @@ public class DBUtil {
 			props.setProperty("password", _pwd);
 			// props.setProperty("ssl","true");
 			_conn = DriverManager.getConnection(_url+_database, props);
-			//_conn.setAutoCommit(false);
+			_conn.setAutoCommit(false);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
